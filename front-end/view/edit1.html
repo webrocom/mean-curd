@@ -1,0 +1,64 @@
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Add a Video</h1>
+
+            <form id="form_video_create" enctype="multipart/form-data" action="http://localhost:3000/api/videos" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+                <div class="form-group">
+                    <label>Title</label>		
+                    <input type="text" name="title" class="form-control" ng-model="video.title">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" name="description" ng-model="video.description"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Poster</label>
+                    <input class="" name="poster" type="file" id="poster">
+                </div>
+                    <section ng-if="video.poster" class="preview">
+                    <div style="width:100px; padding-top:5px;" class="preview"><img style="width:100%" src="http://localhost:3000/posters/{{ video.poster }}" onerror="this.onerror=null;this.src='http://www.scaleautomag.com/sitefiles/images/no-preview-available.png' " class="img-thumbnail">
+                    </div>
+                    </section>
+                
+                
+                <div class="form-group">
+                    <div class="row">
+                    <div class="col-md-12">
+                        <label>Genre</label>
+                    </div>
+                    
+                    <div class="col-md-2">
+                        <select class="form-control"
+                                ng-model="video.genre" 
+                                ng-options="option.name for option in catgories.availableOptions track by option._id"
+                                autocomplete="off"
+                                >
+                             <option value="">-- Choose --</option>
+                        </select>
+                        <input type="hidden" name="genre" value="{{ video.genre }}">
+                    </div>
+                        
+                    <div class="col-md-1">
+                        <a class="btn btn-info" ng-init="catoggle = 0 " ng-model="catoggle" ng-click="toggle()" >Add new</a>
+                    </div>
+                    
+                    <div class="col-md-4 new-category" ng-show="catoggle">
+                        <input type="text" ng-model="category" class="form-control input-sm" style="display: inline-block; width: 70%">
+                        <a class="btn btn-default btn-sm" href="javascript:void(0)" style="display: inline-block" ng-click="saveCategory()">Save</a>
+                    </div>
+                </div>
+                </div>
+            
+                <div  class="form-group">
+                    <input type="submit" id="submit" value="Save" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>

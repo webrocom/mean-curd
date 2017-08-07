@@ -1,0 +1,70 @@
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-1 pull-right">
+            <a href="#/create" class="btn btn-default pull-right">Create</a>
+        </div>
+        
+        <div class="col-md-4  pull-right">
+            <input class="form-control" ng-model="search" placeholder="Search">
+        </div>
+        
+        <div class="col-md-12">
+            <div class="cssload-container">
+                
+                <br><br><br><br><br><br><br><br>
+        	<div class="cssload-whirlpool"></div>
+            </div>
+            
+            
+            <table class="table table-hover" ng-show=" videos.length > 0">
+                <thead>
+                <th>S.N.</th>
+                <th><input type="checkbox" class="selectAll"  name="useragree" ng-model="clickall" ng-change="toggleSelect(clickall)"></th>
+                <th>Poster</th>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Description</th>
+                <th></th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="video in videos | filter:search">
+                        <td>{{ $index+1 }}</td>
+                        <td>
+                        <input 
+                        type="checkbox"
+                        class="chkvideo"
+                        value="{{ video._id }}"
+                        name="useragree"
+                        ng-model="userchecked"
+                        ng-checked="clickall"
+                        >
+                        </td>
+                        <td align="center">
+                            <div style="width: 55px">
+                                <img src="http://localhost:3000/posters/{{ video.poster }}" style="width: 100%" alt="N/A">                                
+                                <!-- <img ng-if="video.poster" src="http://localhost:3000/posters/{{ video.poster }}" onerror="this.onerror=null;this.src='http://www.scaleautomag.com/sitefiles/images/no-preview-available.png' " alt="Broken image" style="width: 100%">
+
+                                <img ng-if="video.poster === undefined" src="http://www.scaleautomag.com/sitefiles/images/no-preview-available.png" style="width: 100%"> -->
+                            </div>
+                            <!--<div>{{ video.poster }}</div>-->
+                        </td>
+                            
+                        <td ng-bind="video.title"></td>
+                        <td ng-bind="video.genre.name"></td>
+                        <td ng-bind="video.description"></td>
+                        <td>
+                            <a href="#/video/{{ video._id }}">Edit</a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="#/video/delete/{{ video._id }}">Remove</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+
+    <button ng-show=" videos.length > 0" class="btn btn-danger" ng-click="batchDelete()">Batch delete</button>
+
+</div>

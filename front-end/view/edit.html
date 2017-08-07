@@ -1,0 +1,50 @@
+<div class="container">
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Update Video</h1>
+
+            <form ng-submit="Update()">
+                <div class="form-group">
+                    <label>Title</label>		
+                    <input class="form-control" ng-model="video.title">
+                </div>
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" ng-model="video.description" ng-bind="description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Poster</label>
+                    <input class="" type="file" id="poster" ng-model="video.poster">
+                    <section ng-if="video.poster" class="preview">
+                        <div style="width:100px; padding-top:5px;" class="preview"><img style="width:100%" ng-model="video.poster" onerror="this.onerror=null;this.src='/images/noimage.gif';" src="{{ video.poster }}" class="img-thumbnail"></div>
+                    </section>
+                </div>
+                
+                
+                
+                <div class="form-group">
+                    <label>Genre</label>
+                    <select class="form-control" ng-model="video.genre" autocomplete="off">
+                        <option value="">Choose</option>
+                        <option value="Absurdist/surreal/whimsical">Absurdist/surreal/whimsical</option>
+                        <option value="Action">Action</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Crime">Crime</option>
+                        <option value="Drama">Drama</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Historical">Historical</option>
+                        <option value="Horror">Horror</option>
+                        <option value="SciFi">SciFi</option>
+                    </select>
+                </div>
+                <div  class="form-group">
+                    <input type="submit" value="Update" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</div>
