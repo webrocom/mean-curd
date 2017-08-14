@@ -12,3 +12,12 @@ Website: www.webrocom.net
 Run this project->
 Go to backend directory on terminal and type :
 node app.js
+
+Features:
+
+Add record,
+Delete record,
+View record,
+Update record,
+Batch delete record,
+File upload.
